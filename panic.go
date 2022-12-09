@@ -15,6 +15,9 @@ func Panic(f func(), debug ...any) (r any) {
 
 func panicWith(debug []any, last any) {
 	if len(debug) > 0 {
+		if last == nil {
+			panic(debug)
+		}
 		panic(append(debug, last))
 	}
 	panic(last)
