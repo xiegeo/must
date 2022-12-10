@@ -20,7 +20,7 @@ func (allowAll) Debug(v any) any {
 	return anyDebugMessage
 }
 
-// Checker can be used by B# functions to check if value is allowed.
+// Checker can be used by B# functions to check if a value is allowed.
 type Checker interface {
 	// MustBe returns true iff value is allowed.
 	MustBe(v any) bool

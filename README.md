@@ -69,7 +69,7 @@ Since this library is heavily dependent on generics. **1.18** is the minimum Go 
 
 Tagged versions follow **sematic versioning**. Untagged master/main branch is for development.
 
-Values used in panics are only for debugging. No guarantees are provided on how panics are constructed. This means the recovered value and stack track could change even in bugfix versions.
+Values used in panics are only for debugging. No guarantees are provided on how panics are constructed. This means the recovered value and stack trace could change even in bugfix versions.
 
 ## Version 1.0 milestone
 
