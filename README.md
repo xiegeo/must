@@ -56,6 +56,22 @@ Functions like `True(bool)` and friends. To assert a condition or panic.
 `B1`, `B2`... are generic assertions that pass their first inputs unmodified with compile time type info preserved.
 They return a function to specify what assertions are made on each field.
 
+``` go
+func ExampleB3() {
+    // lets say we have an io.RuneReader
+    readRune := func() (r rune, size int, err error) {
+        return 'a', 1, nil
+    }
+
+    // that must return 1 byte runes and never err out
+    char, _, _ := must.B3(readRune())(must.Any, 1, nil)
+    fmt.Println(string(char))
+
+    // output:
+    // a
+}
+```
+
 Assertions have optional debug arguments, to provide additional information when
 violated. Usually, just pass in the line comment as string.
 
