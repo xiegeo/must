@@ -1,6 +1,6 @@
 package must
 
-// Panic expects function f to panic and return the recovered value.
+// Panic expects function f to panic and returns the recovered value.
 // Panic will panic if the expected panic did not happen.
 func Panic(f func(), debug ...any) (r any) {
 	defer func() {
