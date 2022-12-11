@@ -90,3 +90,7 @@ Values used in panics are only for debugging. No guarantees are provided on how 
 ## Version 1.0 milestone
 
 - Gain enough downstream usage cases to prove API fitness and stability.
+
+## Alternatives 
+
+See [wiki](https://github.com/xiegeo/must/wiki/Alternatives)
