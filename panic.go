@@ -15,6 +15,13 @@ func Panic(f func(), debug ...any) (r any) {
 
 func panicWith(debug []any, last any) {
 	if len(debug) > 0 {
+		if t, ok := debug[0].(TBSubset); ok {
+			t.Helper()
+			if last == nil {
+				t.Fatal(debug...)
+			}
+			t.Fatal(append(debug, last))
+		}
 		if last == nil {
 			panic(debug)
 		}
