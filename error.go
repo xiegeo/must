@@ -11,7 +11,7 @@ func NoError(err error) {
 
 // Value panics on error, otherwise returns the first value.
 //
-// Use this instead of writing a Must version of your function.
+// You can use this instead of ignoring errors that never happen by contract.
 func Value[T any](out T, err error) T {
 	if err != nil {
 		panic(err)

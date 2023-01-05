@@ -2,7 +2,7 @@
 
 When you don't need error handling
 
-I found myself using this snipped lots.
+I found myself using this snipped in a few places.
 
 ``` go
 func must[T any](out T, err error) T {
@@ -28,7 +28,7 @@ Occasionally a little more, so made a home for them, DRY.
 ``` go
 // NoError panics on error.
 //
-// Use this because test coverage.
+// You can use this instead of ignoring errors that never happen by contract.
 func NoError(err error) {
     if err != nil {
         panic(err)
@@ -69,11 +69,21 @@ func ExampleB3() {
 
     // output:
     // a
-}
+}               
 ```
 
 Assertions have optional debug arguments, to provide additional information when
 violated. Usually, just pass in the line comment as string.
+
+### Usage in unit tests
+
+`must.*T#` will cause the function from using panic to using t.Fatal on the provided unit test interface.
+As an alternative to [testify/require](https://pkg.go.dev/github.com/stretchr/testify/require) that allows value chaining.
+
+For the functions that accept `debug ...any`, if the first debug value supports t.Fatal and t.Helper,
+then panic will be changed to calling t.Fatal instead. (This is experimental)
+
+Use of testify or other alterative targeting unit testing should be preferred over must, expectably outside of test setup.
 
 ### Panic test helpers
 
