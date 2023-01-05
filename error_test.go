@@ -1,6 +1,7 @@
 package must_test
 
 import (
+	"errors"
 	"fmt"
 	"io"
 
@@ -44,4 +45,43 @@ func ExampleValue() {
 	// Value with error:&errors.errorString{s:"EOF"}
 	// B2 nil error:7
 	// B2 with error:[#2 EOF value must be nil]
+}
+
+func ExampleValue2() {
+	fmt.Print("Value2 nil error: ")
+	fmt.Println(must.Value2(1, 2, nil))
+
+	fmt.Println("Panic message:", must.Panic(func() {
+		must.Value2(1, 2, errors.New("P"))
+	}).(error).Error())
+
+	// Output:
+	// Value2 nil error: 1 2
+	// Panic message: P
+}
+
+func ExampleValue3() {
+	fmt.Print("Value3 nil error: ")
+	fmt.Println(must.Value3(1, 2, 3, nil))
+
+	fmt.Println("Panic message:", must.Panic(func() {
+		must.Value3(1, 2, 3, errors.New("P"))
+	}).(error).Error())
+
+	// Output:
+	// Value3 nil error: 1 2 3
+	// Panic message: P
+}
+
+func ExampleValue4() {
+	fmt.Print("Value4 nil error: ")
+	fmt.Println(must.Value4(1, 2, 3, 4, nil))
+
+	fmt.Println("Panic message:", must.Panic(func() {
+		must.Value4(1, 2, 3, 4, errors.New("P"))
+	}).(error).Error())
+
+	// Output:
+	// Value4 nil error: 1 2 3 4
+	// Panic message: P
 }
